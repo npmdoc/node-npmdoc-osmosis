@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/rchipka/node-osmosis#readme"
-
-    >osmosis (v1.1.4)</a>
+    <a href="https://github.com/rchipka/node-osmosis#readme">osmosis (v1.1.4)</a>
 </h1>
 <h4>Web scraper for NodeJS</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.osmosis">module osmosis</a><ol>
 
@@ -1794,7 +1787,7 @@
     if (Object.getPrototypeOf(parent) === Command.prototype) {
         // parent is a Command
         this.prev = parent;
-        Object.defineProperty(this, &#x27;instance&#x27;, {
+        Object.defineProperty(this, 'instance', {
             get: Command.prototype.getInstance,
             set: Command.prototype.setInstance
         });
@@ -1807,7 +1800,7 @@
             //  * Not already running
             //  * Not created using `new`
             //  * Not a child instance
-            if (parent.calledWithNew !== true &#x26;&#x26;
+            if (parent.calledWithNew !== true &amp;&amp;
                 parent.parent === undefined) {
                 process.nextTick(function () {
                     // Run on nextTick to allow any
@@ -1886,12 +1879,12 @@
 * @memberof Command
 * @instance
 * @example {@lang javascript}
-* .<span class="apidocCodeKeywordSpan">click</span>(&#x27;#nav &#x3e; a&#x27;)
+* .<span class="apidocCodeKeywordSpan">click</span>('#nav &gt; a')
 * .then(function(window) {
-*      var ajax = window.document.querySelector(&#x22;#ajaxContent&#x22;);
+*      var ajax = window.document.querySelector("#ajaxContent");
 *
-*      if (ajax.textContent.length &#x3e; 0) {
-*          this.log(&#x22;ajax loaded&#x22;);
+*      if (ajax.textContent.length &gt; 0) {
+*          this.log("ajax loaded");
 *      }
 * })
 ...</pre></li>
@@ -1934,16 +1927,16 @@
  * @param {function} callback - Callback
  */
 
-[&#x27;log&#x27;, &#x27;error&#x27;, &#x27;debug&#x27;].forEach(function (name) {
+['log', 'error', 'debug'].forEach(function (name) {
 Command.prototype[name] = function (msg, prefixed) {
     if (msg instanceof Function) {
         this[name] = msg;
         this.instance.<span class="apidocCodeKeywordSpan">config</span>(name, true);
     } else if (this.next !== undefined) {
         if (prefixed === undefined) {
-            this.next[name](&#x27;(&#x27; + this.name + &#x27;) &#x27; + msg, &#x27;&#x27;);
+            this.next[name]('(' + this.name + ') ' + msg, '');
         } else {
-            this.next[name](msg, &#x27;&#x27;);
+            this.next[name](msg, '');
         }
     } else if (this.instance.parent !== undefined) {
 ...</pre></li>
@@ -2007,12 +2000,12 @@ Command.prototype[name] = function (msg, prefixed) {
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;description&#x27;:  &#x27;#postingbody&#x27;,
-    &#x27;subcategory&#x27;:  &#x27;div.breadbox &#x3e; span[4]&#x27;,
-    &#x27;date&#x27;:         &#x27;time@datetime&#x27;,
-    &#x27;latitude&#x27;:     &#x27;#map@data-latitude&#x27;,
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'description':  '#postingbody',
+    'subcategory':  'div.breadbox &gt; span[4]',
+    'date':         'time@datetime',
+    'latitude':     '#map@data-latitude',
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .<span class="apidocCodeKeywordSpan">data</span>(function(listing) {
     // do something with listing data
@@ -2042,7 +2035,7 @@ Command.prototype[name] = function (msg, prefixed) {
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -2246,8 +2239,8 @@ if (callback === undefined)  {
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -2325,18 +2318,18 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.<span class="apidocCodeKeywordSpan">find</span>(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
+.get('www.craigslist.org/about/sites')
+.<span class="apidocCodeKeywordSpan">find</span>('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
 ...</pre></li>
     </ul>
 
@@ -2361,10 +2354,10 @@ osmosis
 
 args = new Array(length);
 
-for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
     args[i] = arguments[i];
 
-    if (typeof args[i] === &#x27;object&#x27;) {
+    if (typeof args[i] === 'object') {
         args[i] = this.<span class="apidocCodeKeywordSpan">findCommandArg</span>(args[i]);
     }
 }
@@ -2395,19 +2388,19 @@ if (func.length === 4) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.<span class="apidocCodeKeywordSpan">follow</span>(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.<span class="apidocCodeKeywordSpan">follow</span>('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
 ...</pre></li>
     </ul>
@@ -2434,17 +2427,17 @@ osmosis
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.<span class="apidocCodeKeywordSpan">get</span>(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
+.<span class="apidocCodeKeywordSpan">get</span>('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
 ...</pre></li>
     </ul>
 
@@ -2642,9 +2635,9 @@ return this.opts;
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;latitude&#x27;:     &#x27;#map@data-latitude&#x27;,
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'latitude':     '#map@data-latitude',
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -2705,15 +2698,15 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 module.exports.then = function (callback) {
 var getContext   = getContextArg, contextArg;
 
-if (callback.length &#x3e; 0) {
+if (callback.length &gt; 0) {
     contextArg = callback.toString().<span class="apidocCodeKeywordSpan">match</span>(regexp_function_arg)[2];
 }
 
-if (contextArg === &#x27;$&#x27;) {
+if (contextArg === '$') {
     getContext = getJQueryArg;
-} else if (contextArg === &#x27;window&#x27;) {
+} else if (contextArg === 'window') {
     getContext = getWindowArg;
-} else if (contextArg === &#x27;document&#x27;) {
+} else if (contextArg === 'document') {
 ...</pre></li>
     </ul>
 
@@ -2735,21 +2728,21 @@ if (contextArg === &#x27;$&#x27;) {
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.<span class="apidocCodeKeywordSpan">paginate</span>(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.<span class="apidocCodeKeywordSpan">paginate</span>('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
-&#x27;title&#x27;:        &#x27;section &#x3e; h2&#x27;,
-&#x27;description&#x27;:  &#x27;#postingbody&#x27;,
-&#x27;subcategory&#x27;:  &#x27;div.breadbox &#x3e; span[4]&#x27;,
-&#x27;date&#x27;:         &#x27;time@datetime&#x27;,
+'title':        'section &gt; h2',
+'description':  '#postingbody',
+'subcategory':  'div.breadbox &gt; span[4]',
+'date':         'time@datetime',
 ...</pre></li>
     </ul>
 
@@ -2817,7 +2810,7 @@ module.exports = function () {
     this.<span class="apidocCodeKeywordSpan">pause</span>();
     this.instance.stopped = true;
     this.instance.paused = true;
-    this.debug(&#x27;stopping&#x27;);
+    this.debug('stopping');
 };
 ...</pre></li>
     </ul>
@@ -2886,7 +2879,7 @@ if (tries === undefined) {
     tries = 0;
 }
 
-if (this.queue.requests &#x3c; this.opts.concurrency) {
+if (this.queue.requests &lt; this.opts.concurrency) {
     this.<span class="apidocCodeKeywordSpan">request</span>(url, opts, callback, tries);
 } else {
     this.queue.enqueue([url, opts, callback, tries]);
@@ -2974,14 +2967,14 @@ if (callback === undefined)  {
     <li>example usage<pre class="apidocCodePre">...
  *
  * // These instances start immediately
- * osmosis.get(&#x27;http://example.com&#x27;);
- * osmosis(&#x27;http://example.com&#x27;);
+ * osmosis.get('http://example.com');
+ * osmosis('http://example.com');
  *
  * // These instances need started
- * instance = new osmosis.get(&#x27;http://example.com&#x27;);
+ * instance = new osmosis.get('http://example.com');
  * instance.<span class="apidocCodeKeywordSpan">run</span>();
  *
- * instance = new osmosis(&#x27;http://example.com&#x27;);
+ * instance = new osmosis('http://example.com');
  * instance.run();
  */
 
@@ -3030,19 +3023,19 @@ if (url !== undefined) {
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.<span class="apidocCodeKeywordSpan">set</span>(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.<span class="apidocCodeKeywordSpan">set</span>('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 ...</pre></li>
     </ul>
 
@@ -3086,12 +3079,12 @@ osmosis
     <li>example usage<pre class="apidocCodePre">...
     var opts = this.getOpts(), headers;
 
-    if (opts.hasOwnProperty(&#x27;headers&#x27;)) {
+    if (opts.hasOwnProperty('headers')) {
         opts.headers[name] = value;
     } else {
         headers = {};
         headers[name] = value;
-        this.<span class="apidocCodeKeywordSpan">setOpt</span>(&#x27;headers&#x27;, headers);
+        this.<span class="apidocCodeKeywordSpan">setOpt</span>('headers', headers);
     }
 
     return this;
@@ -3213,13 +3206,13 @@ Osmosis.prototype.run = function () {
     return command[name](arg1, arg2, arg3);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-            case &#x27;object&#x27;:
+            case 'object':
                 if (obj[key] !== null) {
                     obj[key] = this.findCommandArg(obj[key]);
                 }
 
                 break;
-            case &#x27;function&#x27;:
+            case 'function':
                 obj[key] = this.findCommandArg(this.<span class="apidocCodeKeywordSpan">then</span>(obj[key]));
         }
     }
@@ -3359,7 +3352,7 @@ fs.readdirSync(cmdDir).forEach(function (file) {
     if (Object.getPrototypeOf(parent) === Command.prototype) {
         // parent is a Command
         this.prev = parent;
-        Object.defineProperty(this, &#x27;instance&#x27;, {
+        Object.defineProperty(this, 'instance', {
             get: Command.prototype.getInstance,
             set: Command.prototype.setInstance
         });
@@ -3372,7 +3365,7 @@ fs.readdirSync(cmdDir).forEach(function (file) {
             //  * Not already running
             //  * Not created using `new`
             //  * Not a child instance
-            if (parent.calledWithNew !== true &#x26;&#x26;
+            if (parent.calledWithNew !== true &amp;&amp;
                 parent.parent === undefined) {
                 process.nextTick(function () {
                     // Run on nextTick to allow any
@@ -3418,10 +3411,10 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -3446,12 +3439,12 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 * @memberof Command
 * @instance
 * @example {@lang javascript}
-* .<span class="apidocCodeKeywordSpan">click</span>(&#x27;#nav &#x3e; a&#x27;)
+* .<span class="apidocCodeKeywordSpan">click</span>('#nav &gt; a')
 * .then(function(window) {
-*      var ajax = window.document.querySelector(&#x22;#ajaxContent&#x22;);
+*      var ajax = window.document.querySelector("#ajaxContent");
 *
-*      if (ajax.textContent.length &#x3e; 0) {
-*          this.log(&#x22;ajax loaded&#x22;);
+*      if (ajax.textContent.length &gt; 0) {
+*          this.log("ajax loaded");
 *      }
 * })
 ...</pre></li>
@@ -3478,17 +3471,17 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -3500,16 +3493,16 @@ fs.readdirSync(cmdDir).forEach(function (file) {
  * @param {function} callback - Callback
  */
 
-[&#x27;log&#x27;, &#x27;error&#x27;, &#x27;debug&#x27;].forEach(function (name) {
+['log', 'error', 'debug'].forEach(function (name) {
 Command.prototype[name] = function (msg, prefixed) {
     if (msg instanceof Function) {
         this[name] = msg;
         this.instance.<span class="apidocCodeKeywordSpan">config</span>(name, true);
     } else if (this.next !== undefined) {
         if (prefixed === undefined) {
-            this.next[name](&#x27;(&#x27; + this.name + &#x27;) &#x27; + msg, &#x27;&#x27;);
+            this.next[name]('(' + this.name + ') ' + msg, '');
         } else {
-            this.next[name](msg, &#x27;&#x27;);
+            this.next[name](msg, '');
         }
     } else if (this.instance.parent !== undefined) {
 ...</pre></li>
@@ -3538,10 +3531,10 @@ Command.prototype[name] = function (msg, prefixed) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -3582,17 +3575,17 @@ Command.prototype[name] = function (msg, prefixed) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -3626,10 +3619,10 @@ Command.prototype[name] = function (msg, prefixed) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -3647,12 +3640,12 @@ Command.prototype[name] = function (msg, prefixed) {
     return self.next;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;description&#x27;:  &#x27;#postingbody&#x27;,
-    &#x27;subcategory&#x27;:  &#x27;div.breadbox &#x3e; span[4]&#x27;,
-    &#x27;date&#x27;:         &#x27;time@datetime&#x27;,
-    &#x27;latitude&#x27;:     &#x27;#map@data-latitude&#x27;,
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'description':  '#postingbody',
+    'subcategory':  'div.breadbox &gt; span[4]',
+    'date':         'time@datetime',
+    'latitude':     '#map@data-latitude',
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .<span class="apidocCodeKeywordSpan">data</span>(function(listing) {
     // do something with listing data
@@ -3679,9 +3672,9 @@ Command.prototype[name] = function (msg, prefixed) {
         this.instance.config(name, true);
     } else if (this.next !== undefined) {
         if (prefixed === undefined) {
-            this.next[name](&#x27;(&#x27; + this.name + &#x27;) &#x27; + msg, &#x27;&#x27;);
+            this.next[name]('(' + this.name + ') ' + msg, '');
         } else {
-            this.next[name](msg, &#x27;&#x27;);
+            this.next[name](msg, '');
         }
     } else if (this.instance.parent !== undefined) {
         this.instance.parent[name](msg, true);
@@ -3690,7 +3683,7 @@ Command.prototype[name] = function (msg, prefixed) {
     return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -3732,10 +3725,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -3778,10 +3771,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -3822,17 +3815,17 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -3871,8 +3864,8 @@ if (--self.count === 0) {
     <li>description and source-code<pre class="apidocCodePre">end = function (context, data) {
     var window, parent;
 
-    // We&#x27;re on the &#x22;sentinel node&#x22;, meaning
-    // We&#x27;ve reached the end of the command chain
+    // We're on the "sentinel node", meaning
+    // We've reached the end of the command chain
     if (context !== undefined) {
         if (context.doc === undefined) {
             window = context.window;
@@ -3940,9 +3933,9 @@ if (callback === undefined)  {
         this.instance.config(name, true);
     } else if (this.next !== undefined) {
         if (prefixed === undefined) {
-            this.next[name](&#x27;(&#x27; + this.name + &#x27;) &#x27; + msg, &#x27;&#x27;);
+            this.next[name]('(' + this.name + ') ' + msg, '');
         } else {
-            this.next[name](msg, &#x27;&#x27;);
+            this.next[name](msg, '');
         }
     } else if (this.instance.parent !== undefined) {
         this.instance.parent[name](msg, true);
@@ -3951,8 +3944,8 @@ if (callback === undefined)  {
     return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -3992,10 +3985,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4038,10 +4031,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4084,10 +4077,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4108,18 +4101,18 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.<span class="apidocCodeKeywordSpan">find</span>(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
+.get('www.craigslist.org/about/sites')
+.<span class="apidocCodeKeywordSpan">find</span>('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
 ...</pre></li>
     </ul>
 
@@ -4143,16 +4136,16 @@ osmosis
     keys    = Object.keys(obj);
     length  = keys.length;
 
-    for (; i &#x3c; length; i++) {
+    for (; i &lt; length; i++) {
         key = keys[i];
         switch (typeof obj[key]) {
-            case &#x27;object&#x27;:
+            case 'object':
                 if (obj[key] !== null) {
                     obj[key] = this.findCommandArg(obj[key]);
                 }
 
                 break;
-            case &#x27;function&#x27;:
+            case 'function':
                 obj[key] = this.findCommandArg(this.then(obj[key]));
         }
     }
@@ -4163,10 +4156,10 @@ osmosis
 
 args = new Array(length);
 
-for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
     args[i] = arguments[i];
 
-    if (typeof args[i] === &#x27;object&#x27;) {
+    if (typeof args[i] === 'object') {
         args[i] = this.<span class="apidocCodeKeywordSpan">findCommandArg</span>(args[i]);
     }
 }
@@ -4201,10 +4194,10 @@ if (func.length === 4) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4223,19 +4216,19 @@ if (func.length === 4) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.<span class="apidocCodeKeywordSpan">follow</span>(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.<span class="apidocCodeKeywordSpan">follow</span>('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
 ...</pre></li>
     </ul>
@@ -4263,10 +4256,10 @@ osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4288,17 +4281,17 @@ osmosis
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.<span class="apidocCodeKeywordSpan">get</span>(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
+.<span class="apidocCodeKeywordSpan">get</span>('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
 ...</pre></li>
     </ul>
 
@@ -4383,17 +4376,17 @@ return this.opts;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -4425,17 +4418,17 @@ return this.opts;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -4469,10 +4462,10 @@ return this.opts;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4532,10 +4525,10 @@ return this.opts;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4570,9 +4563,9 @@ return this.opts;
         this.instance.config(name, true);
     } else if (this.next !== undefined) {
         if (prefixed === undefined) {
-            this.next[name](&#x27;(&#x27; + this.name + &#x27;) &#x27; + msg, &#x27;&#x27;);
+            this.next[name]('(' + this.name + ') ' + msg, '');
         } else {
-            this.next[name](msg, &#x27;&#x27;);
+            this.next[name](msg, '');
         }
     } else if (this.instance.parent !== undefined) {
         this.instance.parent[name](msg, true);
@@ -4581,9 +4574,9 @@ return this.opts;
     return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    &#x27;latitude&#x27;:     &#x27;#map@data-latitude&#x27;,
-    &#x27;longitude&#x27;:    &#x27;#map@data-longitude&#x27;,
-    &#x27;images&#x27;:       [&#x27;img@src&#x27;]
+    'latitude':     '#map@data-latitude',
+    'longitude':    '#map@data-longitude',
+    'images':       ['img@src']
 })
 .data(function(listing) {
     // do something with listing data
@@ -4623,10 +4616,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4669,10 +4662,10 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4696,15 +4689,15 @@ For documentation and examples check out [https://rchipka.github.io/node-osmosis
 module.exports.then = function (callback) {
 var getContext   = getContextArg, contextArg;
 
-if (callback.length &#x3e; 0) {
+if (callback.length &gt; 0) {
     contextArg = callback.toString().<span class="apidocCodeKeywordSpan">match</span>(regexp_function_arg)[2];
 }
 
-if (contextArg === &#x27;$&#x27;) {
+if (contextArg === '$') {
     getContext = getJQueryArg;
-} else if (contextArg === &#x27;window&#x27;) {
+} else if (contextArg === 'window') {
     getContext = getWindowArg;
-} else if (contextArg === &#x27;document&#x27;) {
+} else if (contextArg === 'document') {
 ...</pre></li>
     </ul>
 
@@ -4731,10 +4724,10 @@ if (contextArg === &#x27;$&#x27;) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4752,21 +4745,21 @@ if (contextArg === &#x27;$&#x27;) {
     return self.next;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.<span class="apidocCodeKeywordSpan">paginate</span>(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.<span class="apidocCodeKeywordSpan">paginate</span>('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
-&#x27;title&#x27;:        &#x27;section &#x3e; h2&#x27;,
-&#x27;description&#x27;:  &#x27;#postingbody&#x27;,
-&#x27;subcategory&#x27;:  &#x27;div.breadbox &#x3e; span[4]&#x27;,
-&#x27;date&#x27;:         &#x27;time@datetime&#x27;,
+'title':        'section &gt; h2',
+'description':  '#postingbody',
+'subcategory':  'div.breadbox &gt; span[4]',
+'date':         'time@datetime',
 ...</pre></li>
     </ul>
 
@@ -4793,10 +4786,10 @@ if (contextArg === &#x27;$&#x27;) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4853,17 +4846,17 @@ opts.headers.referer = document.location.href;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -4882,7 +4875,7 @@ module.exports = function () {
     this.<span class="apidocCodeKeywordSpan">pause</span>();
     this.instance.stopped = true;
     this.instance.paused = true;
-    this.debug(&#x27;stopping&#x27;);
+    this.debug('stopping');
 };
 ...</pre></li>
     </ul>
@@ -4910,10 +4903,10 @@ module.exports = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -4954,17 +4947,17 @@ module.exports = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -4992,7 +4985,7 @@ module.exports = function () {
         url, document, key, proxies;
 
     if (!href || href.length === 0) {
-        callback(&#x22;Invalid URL&#x22;);
+        callback("Invalid URL");
         return;
     }
 
@@ -5023,16 +5016,16 @@ module.exports = function () {
             opts.cookies = document.cookies;
         }
 
-        if (method === &#x27;post&#x27;) {
+        if (method === 'post') {
             // Check the enctype if submitting a form
             if (formFunctions.isMultipart(context)) {
                 opts.multipart = true;
             }
         }
-    } else if (href.substr(0, 1) === &#x27;//&#x27;) {
-        url = URL.parse(&#x27;http:&#x27; + href, true);
-    } else if (href.substr(0, 4) !== &#x27;http&#x27;) {
-        url = URL.parse(&#x27;http://&#x27; + href, true);
+    } else if (href.substr(0, 1) === '//') {
+        url = URL.parse('http:' + href, true);
+    } else if (href.substr(0, 4) !== 'http') {
+        url = URL.parse('http://' + href, true);
     } else {
         url = URL.parse(href, true);
     }
@@ -5040,7 +5033,7 @@ module.exports = function () {
     url.method = method;
     url.params = params;
 
-    if (method === &#x27;get&#x27;) {
+    if (method === 'get') {
         for (key in params) {
             url.query[key] = params[key];
         }
@@ -5057,7 +5050,7 @@ module.exports = function () {
     if (opts.proxies !== undefined) {
         proxies = opts.proxies;
 
-        if (proxies.index === undefined || ++proxies.index &#x3e;= proxies.length) {
+        if (proxies.index === undefined || ++proxies.index &gt;= proxies.length) {
             proxies.index = 0;
         }
 
@@ -5068,8 +5061,8 @@ module.exports = function () {
     function (err, res, document) {
         if (err !== null) {
             self.error((self.name !== method ?
-                        &#x27;[&#x27; + method + &#x27;] &#x27; :
-                        &#x27;&#x27;) + (url.href) + &#x27; - &#x27; + err);
+                        '[' + method + '] ' :
+                        '') + (url.href) + ' - ' + err);
 
             if (length === 2) {
                 callback(err, document);
@@ -5077,13 +5070,13 @@ module.exports = function () {
                 callback(err, res, document);
             }
         } else {
-            self.log(&#x27;loaded [&#x27; + method + &#x27;] &#x27; + url.href + &#x27; &#x27; +
+            self.log('loaded [' + method + '] ' + url.href + ' ' +
                 (params ?
                 JSON.stringify(params) :
-                &#x27;&#x27;) +
+                '') +
                 (opts.proxy ?
-                &#x27; via &#x27; + opts.proxy :
-                &#x27;&#x27;)
+                ' via ' + opts.proxy :
+                '')
             );
 
             if (length === 1) {
@@ -5103,7 +5096,7 @@ if (tries === undefined) {
     tries = 0;
 }
 
-if (this.queue.requests &#x3c; this.opts.concurrency) {
+if (this.queue.requests &lt; this.opts.concurrency) {
     this.<span class="apidocCodeKeywordSpan">request</span>(url, opts, callback, tries);
 } else {
     this.queue.enqueue([url, opts, callback, tries]);
@@ -5136,17 +5129,17 @@ var arr, length = this.queue.length;
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -5196,10 +5189,10 @@ if (callback === undefined)  {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5234,14 +5227,14 @@ if (callback === undefined)  {
     <li>example usage<pre class="apidocCodePre">...
  *
  * // These instances start immediately
- * osmosis.get(&#x27;http://example.com&#x27;);
- * osmosis(&#x27;http://example.com&#x27;);
+ * osmosis.get('http://example.com');
+ * osmosis('http://example.com');
  *
  * // These instances need started
- * instance = new osmosis.get(&#x27;http://example.com&#x27;);
+ * instance = new osmosis.get('http://example.com');
  * instance.<span class="apidocCodeKeywordSpan">run</span>();
  *
- * instance = new osmosis(&#x27;http://example.com&#x27;);
+ * instance = new osmosis('http://example.com');
  * instance.run();
  */
 
@@ -5273,10 +5266,10 @@ if (url !== undefined) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5319,10 +5312,10 @@ if (url !== undefined) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5342,19 +5335,19 @@ if (url !== undefined) {
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.<span class="apidocCodeKeywordSpan">set</span>(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.<span class="apidocCodeKeywordSpan">set</span>('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 ...</pre></li>
     </ul>
 
@@ -5385,9 +5378,9 @@ osmosis
     <li>description and source-code<pre class="apidocCodePre">setOpt = function (name, value) {
     var opts = this.getOpts();
 
-    if (value !== null &#x26;&#x26;
-        value instanceof Object &#x26;&#x26;
-        opts[name] !== null &#x26;&#x26;
+    if (value !== null &amp;&amp;
+        value instanceof Object &amp;&amp;
+        opts[name] !== null &amp;&amp;
         opts[name] instanceof Object) {
         opts[name] = extend(value, opts[name]);
     } else {
@@ -5399,12 +5392,12 @@ osmosis
     <li>example usage<pre class="apidocCodePre">...
     var opts = this.getOpts(), headers;
 
-    if (opts.hasOwnProperty(&#x27;headers&#x27;)) {
+    if (opts.hasOwnProperty('headers')) {
         opts.headers[name] = value;
     } else {
         headers = {};
         headers[name] = value;
-        this.<span class="apidocCodeKeywordSpan">setOpt</span>(&#x27;headers&#x27;, headers);
+        this.<span class="apidocCodeKeywordSpan">setOpt</span>('headers', headers);
     }
 
     return this;
@@ -5526,17 +5519,17 @@ Osmosis.prototype.run = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
     }
 
     process.nextTick(function () {
         if (self.next !== undefined) {
-            // We&#x27;re NOT on the last command, so we call `func` in the
+            // We're NOT on the last command, so we call `func` in the
             // context of the PRECEEDING command
             func.apply(self.prev, args);
         } else {
-            // We&#x27;re on the last command, so we call `func` in the
+            // We're on the last command, so we call `func` in the
             // context of the FIRST command
             func.apply(self.instance.command, args);
         }
@@ -5570,10 +5563,10 @@ Osmosis.prototype.run = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5616,10 +5609,10 @@ Osmosis.prototype.run = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5662,10 +5655,10 @@ Osmosis.prototype.run = function () {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5683,13 +5676,13 @@ Osmosis.prototype.run = function () {
     return self.next;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-            case &#x27;object&#x27;:
+            case 'object':
                 if (obj[key] !== null) {
                     obj[key] = this.findCommandArg(obj[key]);
                 }
 
                 break;
-            case &#x27;function&#x27;:
+            case 'function':
                 obj[key] = this.findCommandArg(this.<span class="apidocCodeKeywordSpan">then</span>(obj[key]));
         }
     }
@@ -5724,10 +5717,10 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5770,10 +5763,10 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5816,10 +5809,10 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5862,10 +5855,10 @@ fs.readdirSync(cmdDir).forEach(function (file) {
 
     args = new Array(length);
 
-    for (i = 0; i &#x3c; length &#x26;&#x26; arguments[i] !== undefined; i++) {
+    for (i = 0; i &lt; length &amp;&amp; arguments[i] !== undefined; i++) {
         args[i] = arguments[i];
 
-        if (typeof args[i] === &#x27;object&#x27;) {
+        if (typeof args[i] === 'object') {
             args[i] = this.findCommandArg(args[i]);
         }
     }
@@ -5935,7 +5928,7 @@ fs.readdirSync(cmdDir).forEach(function (file) {
             done();
         }, i;
 
-    for (i = 0; i &#x3c; length; i++) {
+    for (i = 0; i &lt; length; i++) {
         args[i].start(context, data.<span class="apidocCodeKeywordSpan">child</span>().done(dataDone));
     }
 };
@@ -5996,7 +5989,7 @@ return callback.call(this, context, data, function (c, d) {
     } else if (obj instanceof Object) {
         data = {};
 
-        for (i = 0, keys = Object.keys(obj); i &#x3c; keys.length; i++) {
+        for (i = 0, keys = Object.keys(obj); i &lt; keys.length; i++) {
             key = keys[i];
             data[key] = obj[key];
         }
@@ -6203,7 +6196,7 @@ opts.proxies = opts.proxy;
     if (opts.proxies !== undefined) {
 proxies = opts.proxies;
 
-if (proxies.index === undefined || ++proxies.index &#x3e;= proxies.length) {
+if (proxies.index === undefined || ++proxies.index &gt;= proxies.length) {
 ...</pre></li>
     </ul>
 
@@ -6218,7 +6211,7 @@ if (proxies.index === undefined || ++proxies.index &#x3e;= proxies.length) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isEmpty = function () {
     return (this.object === undefined ||
-            (this.object instanceof Object &#x26;&#x26;
+            (this.object instanceof Object &amp;&amp;
              Object.keys(this.object).length === 0)
             );
 }</pre></li>
@@ -6433,19 +6426,19 @@ return callback.call(this, context, data, function (c, d) {
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.<span class="apidocCodeKeywordSpan">set</span>(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.<span class="apidocCodeKeywordSpan">set</span>('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 ...</pre></li>
     </ul>
 
@@ -6611,10 +6604,10 @@ if (err !== undefined) {
     <li>description and source-code<pre class="apidocCodePre">getAction = function (node) {
     var document = node.doc();
 
-    if (node.hasAttribute(&#x27;action&#x27;)) {
-        return document.location.resolve(node.getAttribute(&#x27;action&#x27;));
-    } else if (node.hasAttribute(&#x27;formaction&#x27;)) {
-        return document.location.resolve(node.getAttribute(&#x27;formaction&#x27;));
+    if (node.hasAttribute('action')) {
+        return document.location.resolve(node.getAttribute('action'));
+    } else if (node.hasAttribute('formaction')) {
+        return document.location.resolve(node.getAttribute('formaction'));
     } else {
         return document.location.href;
     }
@@ -6624,13 +6617,13 @@ if (err !== undefined) {
 }
 
 params = form.getParams(loginForm);
-params[userInput.getAttribute(&#x27;name&#x27;)] = user;
-params[passInput.getAttribute(&#x27;name&#x27;)] = pass;
+params[userInput.getAttribute('name')] = user;
+params[passInput.getAttribute('name')] = pass;
 
 url = form.<span class="apidocCodeKeywordSpan">getAction</span>(loginForm);
 method = form.getMethod(loginForm);
 
-this.debug(method + &#x27; &#x27; + url + &#x27; &#x27; + JSON.stringify(params));
+this.debug(method + ' ' + url + ' ' + JSON.stringify(params));
 
 this.request(method,
              loginForm,
@@ -6648,13 +6641,13 @@ this.request(method,
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getEnctype = function (node) {
-    if (node.hasAttribute(&#x27;enctype&#x27;)) {
-        return node.getAttribute(&#x27;enctype&#x27;);
-    } else if (node.hasAttribute(&#x27;formenctype&#x27;)) {
-        return node.getAttribute(&#x27;formenctype&#x27;);
+    if (node.hasAttribute('enctype')) {
+        return node.getAttribute('enctype');
+    } else if (node.hasAttribute('formenctype')) {
+        return node.getAttribute('formenctype');
     }
 
-    return &#x27;application/x-www-form-urlencoded&#x27;;
+    return 'application/x-www-form-urlencoded';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
@@ -6664,14 +6657,14 @@ if (node.hasAttribute === undefined) {
     return false;
 }
 
-return (form.<span class="apidocCodeKeywordSpan">getEnctype</span>(node).substr(0, 5) === &#x27;multi&#x27;);
+return (form.<span class="apidocCodeKeywordSpan">getEnctype</span>(node).substr(0, 5) === 'multi');
 };
 
 form.getMethod = function (node) {
-if (node.hasAttribute(&#x27;method&#x27;)) {
-    return node.getAttribute(&#x27;method&#x27;).toLowerCase();
-} else if (node.hasAttribute(&#x27;formmethod&#x27;)) {
-    return node.getAttribute(&#x27;formmethod&#x27;).toLowerCase();
+if (node.hasAttribute('method')) {
+    return node.getAttribute('method').toLowerCase();
+} else if (node.hasAttribute('formmethod')) {
+    return node.getAttribute('formmethod').toLowerCase();
 ...</pre></li>
     </ul>
 
@@ -6687,28 +6680,28 @@ if (node.hasAttribute(&#x27;method&#x27;)) {
     <li>description and source-code<pre class="apidocCodePre">getForm = function (node) {
     if (form.isForm(node)) {
         return node;
-    } else if (node.hasAttribute(&#x27;form&#x27;)) {
-        return node.doc().getElementById(node.getAttribute(&#x27;form&#x27;));
+    } else if (node.hasAttribute('form')) {
+        return node.doc().getElementById(node.getAttribute('form'));
     } else {
-        return node.get(&#x27;ancestor-or-self::form&#x27;);
+        return node.get('ancestor-or-self::form');
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    return node.doc().getElementById(node.getAttribute(&#x27;form&#x27;));
+    return node.doc().getElementById(node.getAttribute('form'));
 } else {
-    return node.get(&#x27;ancestor-or-self::form&#x27;);
+    return node.get('ancestor-or-self::form');
 }
 };
 
 form.getInputs = function (node) {
-return form.<span class="apidocCodeKeywordSpan">getForm</span>(node).find(&#x27;[@name &#x27; +
-                        &#x27;and not(@disabled) &#x27; +
-                        &#x27;and not(@type=&#x22;submit&#x22;)]&#x27;);
+return form.<span class="apidocCodeKeywordSpan">getForm</span>(node).find('[@name ' +
+                        'and not(@disabled) ' +
+                        'and not(@type="submit")]');
 };
 
 form.getSubmitButton = function (node) {
 if (form.isForm(node)) {
-    return node.get(&#x27;[@type=&#x22;submit&#x22; and not(@disabled) and &#x27; +
+    return node.get('[@type="submit" and not(@disabled) and ' +
 ...</pre></li>
     </ul>
 
@@ -6722,12 +6715,12 @@ if (form.isForm(node)) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getInputs = function (node) {
-    return form.getForm(node).find(&#x27;[@name &#x27; +
-                            &#x27;and not(@disabled) &#x27; +
-                            &#x27;and not(@type=&#x22;submit&#x22;)]&#x27;);
+    return form.getForm(node).find('[@name ' +
+                            'and not(@disabled) ' +
+                            'and not(@type="submit")]');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    return &#x27;get&#x27;;
+    return 'get';
 }
 };
 
@@ -6738,10 +6731,10 @@ var params = {},
     length = inputs.length,
     i = 0, input, name, nodeName, type, value;
 
-for (i = 0; i &#x3c; length; i++) {
+for (i = 0; i &lt; length; i++) {
     input = inputs[i];
-    name = input.getAttribute(&#x27;name&#x27;);
-    type = input.getAttribute(&#x27;type&#x27;);
+    name = input.getAttribute('name');
+    type = input.getAttribute('type');
 ...</pre></li>
     </ul>
 
@@ -6755,25 +6748,25 @@ for (i = 0; i &#x3c; length; i++) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getMethod = function (node) {
-    if (node.hasAttribute(&#x27;method&#x27;)) {
-        return node.getAttribute(&#x27;method&#x27;).toLowerCase();
-    } else if (node.hasAttribute(&#x27;formmethod&#x27;)) {
-        return node.getAttribute(&#x27;formmethod&#x27;).toLowerCase();
+    if (node.hasAttribute('method')) {
+        return node.getAttribute('method').toLowerCase();
+    } else if (node.hasAttribute('formmethod')) {
+        return node.getAttribute('formmethod').toLowerCase();
     } else {
-        return &#x27;get&#x27;;
+        return 'get';
     }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 }
 
 params = form.getParams(loginForm);
-params[userInput.getAttribute(&#x27;name&#x27;)] = user;
-params[passInput.getAttribute(&#x27;name&#x27;)] = pass;
+params[userInput.getAttribute('name')] = user;
+params[passInput.getAttribute('name')] = pass;
 
 url = form.getAction(loginForm);
 method = form.<span class="apidocCodeKeywordSpan">getMethod</span>(loginForm);
 
-this.debug(method + &#x27; &#x27; + url + &#x27; &#x27; + JSON.stringify(params));
+this.debug(method + ' ' + url + ' ' + JSON.stringify(params));
 
 this.request(method,
              loginForm,
@@ -6798,14 +6791,14 @@ this.request(method,
         length = inputs.length,
         i = 0, input, name, nodeName, type, value;
 
-    for (i = 0; i &#x3c; length; i++) {
+    for (i = 0; i &lt; length; i++) {
         input = inputs[i];
-        name = input.getAttribute(&#x27;name&#x27;);
-        type = input.getAttribute(&#x27;type&#x27;);
+        name = input.getAttribute('name');
+        type = input.getAttribute('type');
         nodeName = input.nodeName;
         value = null;
 
-        if (name.charAt(name.length - 1) === &#x27;]&#x27;) {
+        if (name.charAt(name.length - 1) === ']') {
             name = name.substr(0, name.length - 2);
         }
 
@@ -6814,27 +6807,27 @@ this.request(method,
         }
 
         switch (nodeName) {
-            case &#x27;select&#x27;:
-                input = input.get(&#x27;option[selected]&#x27;) ||
-                        input.get(&#x27;option:first&#x27;);
+            case 'select':
+                input = input.get('option[selected]') ||
+                        input.get('option:first');
 
                 if (input !== null) {
-                    if (input.hasAttribute(&#x27;value&#x27;)) {
-                        value = input.getAttribute(&#x27;value&#x27;);
+                    if (input.hasAttribute('value')) {
+                        value = input.getAttribute('value');
                     } else {
                         value = input.textContent;
                     }
                 }
 
                 break;
-            case &#x27;textarea&#x27;:
+            case 'textarea':
                 value = input.textContent;
                 break;
-            case &#x27;input&#x27;:
+            case 'input':
                 switch (type) {
-                    case &#x27;radio&#x27;:
-                    case &#x27;image&#x27;:
-                        [&#x27;x&#x27;, &#x27;y&#x27;].forEach(function (p) {
+                    case 'radio':
+                    case 'image':
+                        ['x', 'y'].forEach(function (p) {
                             var array = [];
 
                             if (name) {
@@ -6843,19 +6836,19 @@ this.request(method,
 
                             array.push(p);
 
-                            params[array.join(&#x27;.&#x27;)] = 0;
+                            params[array.join('.')] = 0;
                         });
-                    case &#x27;checkbox&#x27;:
-                        if (!input.hasAttribute(&#x27;checked&#x27;))  {
+                    case 'checkbox':
+                        if (!input.hasAttribute('checked'))  {
                             break;
                         }
 
-                        name  = name.replace(/\[\]$/, &#x27;&#x27;);
-                        value = input.getAttribute(&#x27;value&#x27;) || &#x27;on&#x27;;
+                        name  = name.replace(/\[\]$/, '');
+                        value = input.getAttribute('value') || 'on';
 
                         break;
                     default:
-                        value = input.getAttribute(&#x27;value&#x27;);
+                        value = input.getAttribute('value');
                         break;
 
                 }
@@ -6874,30 +6867,30 @@ this.request(method,
     }
 
     if (submit !== null) {
-        if (submit.hasAttribute(&#x27;name&#x27;)) {
-            params[submit.getAttribute(&#x27;name&#x27;)] =
-                submit.getAttribute(&#x27;value&#x27;) || &#x27;Submit Query&#x27;;
+        if (submit.hasAttribute('name')) {
+            params[submit.getAttribute('name')] =
+                submit.getAttribute('value') || 'Submit Query';
         }
     }
 
     return params;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-passInput = userInput.get(&#x27;following::input[type=&#x22;password&#x22;]&#x27;);
+passInput = userInput.get('following::input[type="password"]');
 
 if (!passInput) {
-    done(&#x27;No password field found&#x27;);
+    done('No password field found');
     return;
 }
 
 params = form.<span class="apidocCodeKeywordSpan">getParams</span>(loginForm);
-params[userInput.getAttribute(&#x27;name&#x27;)] = user;
-params[passInput.getAttribute(&#x27;name&#x27;)] = pass;
+params[userInput.getAttribute('name')] = user;
+params[passInput.getAttribute('name')] = pass;
 
 url = form.getAction(loginForm);
 method = form.getMethod(loginForm);
 
-this.debug(method + &#x27; &#x27; + url + &#x27; &#x27; + JSON.stringify(params));
+this.debug(method + ' ' + url + ' ' + JSON.stringify(params));
 ...</pre></li>
     </ul>
 
@@ -6912,12 +6905,12 @@ this.debug(method + &#x27; &#x27; + url + &#x27; &#x27; + JSON.stringify(params)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getSubmitButton = function (node) {
     if (form.isForm(node)) {
-        return node.get(&#x27;[@type=&#x22;submit&#x22; and not(@disabled) and &#x27; +
-                        &#x27;(not(@form) or @form=&#x22;&#x27; +
-                            node.getAttribute(&#x27;id&#x27;) + &#x27;&#x22;&#x27; +
-                        &#x27;)][1]&#x27;);
-    } else if ((node.nodeName === &#x27;input&#x27; || node.nodeName === &#x27;button&#x27;) &#x26;&#x26;
-                node.getAttribute(&#x27;type&#x27;) === &#x27;submit&#x27;) {
+        return node.get('[@type="submit" and not(@disabled) and ' +
+                        '(not(@form) or @form="' +
+                            node.getAttribute('id') + '"' +
+                        ')][1]');
+    } else if ((node.nodeName === 'input' || node.nodeName === 'button') &amp;&amp;
+                node.getAttribute('type') === 'submit') {
         return node;
     }
 
@@ -6925,7 +6918,7 @@ this.debug(method + &#x27; &#x27; + url + &#x27; &#x27; + JSON.stringify(params)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 } else {
-    return &#x27;get&#x27;;
+    return 'get';
 }
 };
 
@@ -6936,9 +6929,9 @@ var params = {},
     length = inputs.length,
     i = 0, input, name, nodeName, type, value;
 
-for (i = 0; i &#x3c; length; i++) {
+for (i = 0; i &lt; length; i++) {
     input = inputs[i];
-    name = input.getAttribute(&#x27;name&#x27;);
+    name = input.getAttribute('name');
 ...</pre></li>
     </ul>
 
@@ -6952,22 +6945,22 @@ for (i = 0; i &#x3c; length; i++) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isForm = function (node) {
-    return node.nodeName === &#x27;form&#x27;;
+    return node.nodeName === 'form';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
 
 form.isForm = function (node) {
-    return node.nodeName === &#x27;form&#x27;;
+    return node.nodeName === 'form';
 };
 
 form.getForm = function (node) {
     if (form.<span class="apidocCodeKeywordSpan">isForm</span>(node)) {
         return node;
-    } else if (node.hasAttribute(&#x27;form&#x27;)) {
-        return node.doc().getElementById(node.getAttribute(&#x27;form&#x27;));
+    } else if (node.hasAttribute('form')) {
+        return node.doc().getElementById(node.getAttribute('form'));
     } else {
-        return node.get(&#x27;ancestor-or-self::form&#x27;);
+        return node.get('ancestor-or-self::form');
     }
 };
 ...</pre></li>
@@ -6987,7 +6980,7 @@ form.getForm = function (node) {
         return false;
     }
 
-    return (form.getEnctype(node).substr(0, 5) === &#x27;multi&#x27;);
+    return (form.getEnctype(node).substr(0, 5) === 'multi');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
         opts.cookies = extend(document.cookies, opts.cookies);
@@ -6995,16 +6988,16 @@ form.getForm = function (node) {
         opts.cookies = document.cookies;
     }
 
-    if (method === &#x27;post&#x27;) {
+    if (method === 'post') {
         // Check the enctype if submitting a form
         if (formFunctions.<span class="apidocCodeKeywordSpan">isMultipart</span>(context)) {
             opts.multipart = true;
         }
     }
-} else if (href.substr(0, 1) === &#x27;//&#x27;) {
-    url = URL.parse(&#x27;http:&#x27; + href, true);
-} else if (href.substr(0, 4) !== &#x27;http&#x27;) {
-    url = URL.parse(&#x27;http://&#x27; + href, true);
+} else if (href.substr(0, 1) === '//') {
+    url = URL.parse('http:' + href, true);
+} else if (href.substr(0, 4) !== 'http') {
+    url = URL.parse('http://' + href, true);
 ...</pre></li>
     </ul>
 
@@ -7070,7 +7063,7 @@ form.getForm = function (node) {
 Osmosis.prototype.dequeueRequest = function () {
    var arr, length = this.queue.length;
 
-   if (length === 0 || this.queue.requests &#x3e;= this.opts.concurrency) {
+   if (length === 0 || this.queue.requests &gt;= this.opts.concurrency) {
        return;
    }
 
@@ -7102,7 +7095,7 @@ if (tries === undefined) {
     tries = 0;
 }
 
-if (this.queue.requests &#x3c; this.opts.concurrency) {
+if (this.queue.requests &lt; this.opts.concurrency) {
     this.request(url, opts, callback, tries);
 } else {
     this.queue.<span class="apidocCodeKeywordSpan">enqueue</span>([url, opts, callback, tries]);
@@ -7112,7 +7105,7 @@ if (this.queue.requests &#x3c; this.opts.concurrency) {
 Osmosis.prototype.dequeueRequest = function () {
 var arr, length = this.queue.length;
 
-if (length === 0 || this.queue.requests &#x3e;= this.opts.concurrency) {
+if (length === 0 || this.queue.requests &gt;= this.opts.concurrency) {
 ...</pre></li>
     </ul>
 
@@ -7148,7 +7141,7 @@ if (length === 0 || this.queue.requests &#x3e;= this.opts.concurrency) {
     return this.count;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-                            opts.tries + &#x27;)&#x27;);
+                            opts.tries + ')');
         }
     } else {
         callback(err, res, data);
@@ -7157,10 +7150,10 @@ if (length === 0 || this.queue.requests &#x3e;= this.opts.concurrency) {
     self.dequeueRequest();
     self.queue.<span class="apidocCodeKeywordSpan">pop</span>();
 })
-.on(&#x27;redirect&#x27;, function (new_url) {
+.on('redirect', function (new_url) {
     if (self.opts.log === true) {
-        self.command.log(&#x27;[redirect] &#x27; +
-                         href + &#x27; -&#x3e; &#x27; + new_url);
+        self.command.log('[redirect] ' +
+                         href + ' -&gt; ' + new_url);
     }
 });
 ...</pre></li>
@@ -7176,7 +7169,7 @@ if (length === 0 || this.queue.requests &#x3e;= this.opts.concurrency) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">push = function () {
-    if (++this.change &#x3e;= 25) {
+    if (++this.change &gt;= 25) {
         if (this.instance.resources !== null) {
             this.instance.resources();
         }
@@ -7237,18 +7230,18 @@ request(url.method,
 
     if (nodes.length === 0) {
         if (this.getOpts().debug === true) {
-            this.debug(&#x27;no results for &#x22;&#x27; + selector + &#x27;&#x22;&#x27;);
+            this.debug('no results for "' + selector + '"');
         }
 
         return done();
     }
 
     window = context.doc().defaultView;
-    window.addEventListener(&#x27;done&#x27;, function () {
+    window.addEventListener('done', function () {
         nodes.forEach(function (node, index) {
-            node.dispatchEvent(&#x27;click&#x27;);
+            node.dispatchEvent('click');
 
-            window.addEventListener(&#x27;done&#x27;, function () {
+            window.addEventListener('done', function () {
                 if (index === nodes.length - 1) {
                     next(context, data);
                     done();
@@ -7267,12 +7260,12 @@ request(url.method,
 * @memberof Command
 * @instance
 * @example {@lang javascript}
-* .<span class="apidocCodeKeywordSpan">click</span>(&#x27;#nav &#x3e; a&#x27;)
+* .<span class="apidocCodeKeywordSpan">click</span>('#nav &gt; a')
 * .then(function(window) {
-*      var ajax = window.document.querySelector(&#x22;#ajaxContent&#x22;);
+*      var ajax = window.document.querySelector("#ajaxContent");
 *
-*      if (ajax.textContent.length &#x3e; 0) {
-*          this.log(&#x22;ajax loaded&#x22;);
+*      if (ajax.textContent.length &gt; 0) {
+*          this.log("ajax loaded");
 *      }
 * })
 ...</pre></li>
@@ -7352,7 +7345,7 @@ request(url.method,
             done();
         }, i;
 
-    for (i = 0; i &#x3c; length; i++) {
+    for (i = 0; i &lt; length; i++) {
         args[i].start(context, data.child().done(dataDone));
     }
 }</pre></li>
@@ -7418,20 +7411,20 @@ request(url.method,
     <li>description and source-code<pre class="apidocCodePre">find = function (selector) {
     var self = this;
 
-    if (typeof selector === &#x27;function&#x27;) {
+    if (typeof selector === 'function') {
         this.contextCallback = selector;
     } else if (selector instanceof Array) {
-        this.selector = selector.join(&#x27;, &#x27;);
+        this.selector = selector.join(', ');
     } else {
         this.selector = selector;
     }
 
 
     // Search relative to the context node
-    if (this.name === &#x27;select&#x27;) {
+    if (this.name === 'select') {
         this.relative = true;
     } else {
-        // Wait to see if we&#x27;re a nested instance
+        // Wait to see if we're a nested instance
         process.nextTick(function () {
             if (self.instance.parent !== undefined) {
                 self.relative = true;
@@ -7445,18 +7438,18 @@ request(url.method,
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.<span class="apidocCodeKeywordSpan">find</span>(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
+.get('www.craigslist.org/about/sites')
+.<span class="apidocCodeKeywordSpan">find</span>('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
 ...</pre></li>
     </ul>
 
@@ -7472,20 +7465,20 @@ osmosis
     <li>description and source-code<pre class="apidocCodePre">select = function (selector) {
     var self = this;
 
-    if (typeof selector === &#x27;function&#x27;) {
+    if (typeof selector === 'function') {
         this.contextCallback = selector;
     } else if (selector instanceof Array) {
-        this.selector = selector.join(&#x27;, &#x27;);
+        this.selector = selector.join(', ');
     } else {
         this.selector = selector;
     }
 
 
     // Search relative to the context node
-    if (this.name === &#x27;select&#x27;) {
+    if (this.name === 'select') {
         this.relative = true;
     } else {
-        // Wait to see if we&#x27;re a nested instance
+        // Wait to see if we're a nested instance
         process.nextTick(function () {
             if (self.instance.parent !== undefined) {
                 self.relative = true;
@@ -7529,31 +7522,31 @@ osmosis
         };
 
     if (nodes === undefined || nodes.length === 0) {
-        done(&#x27;no results for &#x22;&#x27; + selector +
-             &#x27;&#x22; in &#x27; + document.location.href);
+        done('no results for "' + selector +
+             '" in ' + document.location.href);
         return;
     }
 
 
-    for (length = nodes.length, i = 0; i &#x3c; length; i++) {
+    for (length = nodes.length, i = 0; i &lt; length; i++) {
         node = nodes[i];
 
         if (node.value !== undefined) {
             url = node.value();
-        } else if (url = node.attr(&#x27;href&#x27;)) {
-            // Don&#x27;t use Attribute.text() or Attribute.value()
+        } else if (url = node.attr('href')) {
+            // Don't use Attribute.text() or Attribute.value()
             // in order to keep URL encoding
             url = url.toString();
-            url = url.substring(url.indexOf(&#x27;&#x22;&#x27;) + 1, url.lastIndexOf(&#x27;&#x22;&#x27;));
+            url = url.substring(url.indexOf('"') + 1, url.lastIndexOf('"'));
         } else {
             url = node.text();
         }
 
-        if (url !== null &#x26;&#x26; url.length &#x3e; 0) {
+        if (url !== null &amp;&amp; url.length &gt; 0) {
             queue++;
 
-            self.log(&#x22;url: &#x22; + url);
-            self.request(&#x27;get&#x27;,
+            self.log("url: " + url);
+            self.request('get',
                         context,
                         url,
                         null,
@@ -7567,19 +7560,19 @@ osmosis
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.<span class="apidocCodeKeywordSpan">follow</span>(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.<span class="apidocCodeKeywordSpan">follow</span>('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
 ...</pre></li>
     </ul>
@@ -7600,17 +7593,17 @@ osmosis
     <ul>
     <li>description and source-code<pre class="apidocCodePre">get = function (url, query) {
     var args  = this.args,
-        urlIsFunction   = typeof url === &#x27;function&#x27;,
-        queryIsFunction = typeof query === &#x27;function&#x27;;
+        urlIsFunction   = typeof url === 'function',
+        queryIsFunction = typeof query === 'function';
 
-    if (typeof args[3] === &#x27;object&#x27; || typeof args[4] === &#x27;object&#x27;) {
-        console.error(&#x22;GET/POST: `opts` argument deprecated.&#x22; +
-                      &#x22;Use `.config` instead.&#x22;);
+    if (typeof args[3] === 'object' || typeof args[4] === 'object') {
+        console.error("GET/POST: `opts` argument deprecated." +
+                      "Use `.config` instead.");
     }
 
-    if (typeof args[3] === &#x27;function&#x27; || typeof args[4] === &#x27;function&#x27;) {
-        console.error(&#x22;GET/POST: `callback` argument deprecated.&#x22; +
-                      &#x22;Use `.then` instead.&#x22;);
+    if (typeof args[3] === 'function' || typeof args[4] === 'function') {
+        console.error("GET/POST: `callback` argument deprecated." +
+                      "Use `.then` instead.");
     }
 
     if (urlIsFunction === true) {
@@ -7629,17 +7622,17 @@ osmosis
 ## Example
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.<span class="apidocCodeKeywordSpan">get</span>(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
+.<span class="apidocCodeKeywordSpan">get</span>('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
 ...</pre></li>
     </ul>
 
@@ -7654,17 +7647,17 @@ osmosis
     <ul>
     <li>description and source-code<pre class="apidocCodePre">post = function (url, query) {
     var args  = this.args,
-        urlIsFunction   = typeof url === &#x27;function&#x27;,
-        queryIsFunction = typeof query === &#x27;function&#x27;;
+        urlIsFunction   = typeof url === 'function',
+        queryIsFunction = typeof query === 'function';
 
-    if (typeof args[3] === &#x27;object&#x27; || typeof args[4] === &#x27;object&#x27;) {
-        console.error(&#x22;GET/POST: `opts` argument deprecated.&#x22; +
-                      &#x22;Use `.config` instead.&#x22;);
+    if (typeof args[3] === 'object' || typeof args[4] === 'object') {
+        console.error("GET/POST: `opts` argument deprecated." +
+                      "Use `.config` instead.");
     }
 
-    if (typeof args[3] === &#x27;function&#x27; || typeof args[4] === &#x27;function&#x27;) {
-        console.error(&#x22;GET/POST: `callback` argument deprecated.&#x22; +
-                      &#x22;Use `.then` instead.&#x22;);
+    if (typeof args[3] === 'function' || typeof args[4] === 'function') {
+        console.error("GET/POST: `callback` argument deprecated." +
+                      "Use `.then` instead.");
     }
 
     if (urlIsFunction === true) {
@@ -7769,15 +7762,15 @@ osmosis
 module.exports.then = function (callback) {
 var getContext   = getContextArg, contextArg;
 
-if (callback.length &#x3e; 0) {
+if (callback.length &gt; 0) {
     contextArg = callback.toString().<span class="apidocCodeKeywordSpan">match</span>(regexp_function_arg)[2];
 }
 
-if (contextArg === &#x27;$&#x27;) {
+if (contextArg === '$') {
     getContext = getJQueryArg;
-} else if (contextArg === &#x27;window&#x27;) {
+} else if (contextArg === 'window') {
     getContext = getWindowArg;
-} else if (contextArg === &#x27;document&#x27;) {
+} else if (contextArg === 'document') {
 ...</pre></li>
     </ul>
 
@@ -7800,10 +7793,10 @@ if (contextArg === &#x27;$&#x27;) {
     this.limit = limit;
 
     switch (typeof limit) {
-        case &#x27;string&#x27;:
+        case 'string':
             this.getLimit = getLimitSelector;
             break;
-        case &#x27;function&#x27;:
+        case 'function':
             this.getLimit = getLimitFunction;
             break;
         default:
@@ -7814,21 +7807,21 @@ if (contextArg === &#x27;$&#x27;) {
     return Paginate;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.set(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.<span class="apidocCodeKeywordSpan">paginate</span>(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.set('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.<span class="apidocCodeKeywordSpan">paginate</span>('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 .set({
-&#x27;title&#x27;:        &#x27;section &#x3e; h2&#x27;,
-&#x27;description&#x27;:  &#x27;#postingbody&#x27;,
-&#x27;subcategory&#x27;:  &#x27;div.breadbox &#x3e; span[4]&#x27;,
-&#x27;date&#x27;:         &#x27;time@datetime&#x27;,
+'title':        'section &gt; h2',
+'description':  '#postingbody',
+'subcategory':  'div.breadbox &gt; span[4]',
+'date':         'time@datetime',
 ...</pre></li>
     </ul>
 
@@ -7887,7 +7880,7 @@ opts.headers.referer = document.location.href;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">rewrite = function (context, data, next, done) {
-    console.error(&#x27;DEPRECATED. Use .find(selector).get(callback) instead.&#x27;);
+    console.error('DEPRECATED. Use .find(selector).get(callback) instead.');
     next(context, data);
     done();
 }</pre></li>
@@ -7915,7 +7908,7 @@ opts.headers.referer = document.location.href;
     if (val !== undefined) {
         args = {};
         args[key] = val;
-    } else if (typeof key === &#x27;string&#x27;) {
+    } else if (typeof key === 'string') {
         args = {};
         args[key] = null;
     }
@@ -7925,19 +7918,19 @@ opts.headers.referer = document.location.href;
     <li>example usage<pre class="apidocCodePre">...
 
 ```javascript
-var osmosis = require(&#x27;osmosis&#x27;);
+var osmosis = require('osmosis');
 
 osmosis
-.get(&#x27;www.craigslist.org/about/sites&#x27;)
-.find(&#x27;h1 + div a&#x27;)
-.<span class="apidocCodeKeywordSpan">set</span>(&#x27;location&#x27;)
-.follow(&#x27;@href&#x27;)
-.find(&#x27;header + div + div li &#x3e; a&#x27;)
-.set(&#x27;category&#x27;)
-.follow(&#x27;@href&#x27;)
-.paginate(&#x27;.totallink + a.button.next:first&#x27;)
-.find(&#x27;p &#x3e; a&#x27;)
-.follow(&#x27;@href&#x27;)
+.get('www.craigslist.org/about/sites')
+.find('h1 + div a')
+.<span class="apidocCodeKeywordSpan">set</span>('location')
+.follow('@href')
+.find('header + div + div li &gt; a')
+.set('category')
+.follow('@href')
+.paginate('.totallink + a.button.next:first')
+.find('p &gt; a')
+.follow('@href')
 ...</pre></li>
     </ul>
 
@@ -8001,28 +7994,28 @@ osmosis
     <li>description and source-code<pre class="apidocCodePre">then = function (callback) {
     var getContext   = getContextArg, contextArg;
 
-    if (callback.length &#x3e; 0) {
+    if (callback.length &gt; 0) {
         contextArg = callback.toString().match(regexp_function_arg)[2];
     }
 
-    if (contextArg === &#x27;$&#x27;) {
+    if (contextArg === '$') {
         getContext = getJQueryArg;
-    } else if (contextArg === &#x27;window&#x27;) {
+    } else if (contextArg === 'window') {
         getContext = getWindowArg;
-    } else if (contextArg === &#x27;document&#x27;) {
+    } else if (contextArg === 'document') {
         getContext = getDocumentArg;
     }
 
     return Then(callback, getContext);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-            case &#x27;object&#x27;:
+            case 'object':
                 if (obj[key] !== null) {
                     obj[key] = this.findCommandArg(obj[key]);
                 }
 
                 break;
-            case &#x27;function&#x27;:
+            case 'function':
                 obj[key] = this.findCommandArg(this.<span class="apidocCodeKeywordSpan">then</span>(obj[key]));
         }
     }
@@ -8125,3 +8118,4 @@ fs.readdirSync(cmdDir).forEach(function (file) {
     ]
 </div>
 </div>
+</body></html>
