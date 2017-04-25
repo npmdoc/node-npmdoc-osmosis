@@ -1,6 +1,6 @@
 # npmdoc-osmosis
 
-#### api documentation for  [osmosis (v1.1.4)](https://github.com/rchipka/node-osmosis#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-osmosis.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-osmosis) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-osmosis.svg)](https://travis-ci.org/npmdoc/node-npmdoc-osmosis)
+#### basic api documentation for  [osmosis (v1.1.4)](https://github.com/rchipka/node-osmosis#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-osmosis.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-osmosis) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-osmosis.svg)](https://travis-ci.org/npmdoc/node-npmdoc-osmosis)
 
 #### Web scraper for NodeJS
 
@@ -71,7 +71,8 @@
     "scripts": {
         "test": "node ./node_modules/.bin/nodeunit test"
     },
-    "version": "1.1.4"
+    "version": "1.1.4",
+    "bin": {}
 }
 ```
 

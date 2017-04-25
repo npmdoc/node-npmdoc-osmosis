@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "osmosis",
-    "description": "#### api documentation for  [osmosis (v1.1.4)](https://github.com/rchipka/node-osmosis#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-osmosis.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-osmosis) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-osmosis.svg)](https://travis-ci.org/npmdoc/node-npmdoc-osmosis)",
+    "description": "#### basic api documentation for  [osmosis (v1.1.4)](https://github.com/rchipka/node-osmosis#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-osmosis.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-osmosis) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-osmosis.svg)](https://travis-ci.org/npmdoc/node-npmdoc-osmosis)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "osmosis": "*",
