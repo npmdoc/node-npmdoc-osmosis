@@ -19,10 +19,10 @@
 <tspan x="10" y="266">  │     │   ├── os-homedir@1.0.2 </tspan>
 <tspan x="10" y="282">  │     │   └── os-tmpdir@1.0.2 </tspan>
 <tspan x="10" y="298">  │     ├─┬ npmlog@4.0.2 </tspan>
-<tspan x="10" y="314">  │     │ ├─┬ are-we-there-yet@1.1.2 </tspan>
+<tspan x="10" y="314">  │     │ ├─┬ are-we-there-yet@1.1.4 </tspan>
 <tspan x="10" y="330">  │     │ │ └── delegates@1.0.0 </tspan>
 <tspan x="10" y="346">  │     │ ├── console-control-strings@1.1.0 </tspan>
-<tspan x="10" y="362">  │     │ ├─┬ gauge@2.7.3 </tspan>
+<tspan x="10" y="362">  │     │ ├─┬ gauge@2.7.4 </tspan>
 <tspan x="10" y="378">  │     │ │ ├── aproba@1.1.1 </tspan>
 <tspan x="10" y="394">  │     │ │ ├── has-unicode@2.0.1 </tspan>
 <tspan x="10" y="410">  │     │ │ ├── object-assign@4.1.1 </tspan>
@@ -122,8 +122,8 @@
 <tspan x="10" y="1914">  │       │ └── util-deprecate@1.0.2 </tspan>
 <tspan x="10" y="1930">  │       └── uid-number@0.0.6 </tspan>
 <tspan x="10" y="1946">  └─┬ needle@1.3.0 </tspan>
-<tspan x="10" y="1962">    ├─┬ debug@2.6.3 </tspan>
-<tspan x="10" y="1978">    │ └── ms@0.7.2 </tspan>
-<tspan x="10" y="1994">    └── iconv-lite@0.4.15</tspan>
+<tspan x="10" y="1962">    ├─┬ debug@2.6.4 </tspan>
+<tspan x="10" y="1978">    │ └── ms@0.7.3 </tspan>
+<tspan x="10" y="1994">    └── iconv-lite@0.4.16</tspan>
 </text>
 </svg>
